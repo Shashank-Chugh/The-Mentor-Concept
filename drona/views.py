@@ -6,7 +6,7 @@ from drona.models import Contest
 # Create your views here.
  
 def home(request):
-    return render(request, 'drona/home.html')
+    return render(request, 'drona/index.html')
     
 def data(URL):
     return requests.get(URL).json()
