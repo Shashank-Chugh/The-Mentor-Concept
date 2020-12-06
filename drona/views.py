@@ -1,15 +1,39 @@
 from django.shortcuts import render,HttpResponse
+from django.http import JsonResponse
 import json
 import requests
 from drona.models import Contest
+from home.models import CustomUser
 
 # Create your views here.
  
-def home(request):
-    return render(request, 'drona/index.html')
     
 def data(URL):
     return requests.get(URL).json()
+
+def home(request):
+    return render(request, 'drona/index.html')
+
+def isvalid_handle(handle):
+    return 1
+    
+
+def guru_list(request):
+
+    if request.is_ajax and request.method=='POST':
+        guru = request.POST.get('guru_handle')
+       
+        if(isvalid_handle(guru)):
+            request.Customuser.gurus = request.Customuser.gurus +';'+ guru
+            return JsonResponse({"x":1})
+        else:
+            return JsonResponse({"x":0})
+
+    else:
+        return HttpResponse("ERROR")
+
+
+
 
 def contests(request):
     #handles from form
@@ -87,3 +111,5 @@ def problems(request):
     return render(request, 'drona/problems.html')
         
         
+
+

@@ -3,6 +3,363 @@
 <html lang="en">
 
 <head>
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet" />
+  <link href="{%static 'vendor/icofont/icofont.min.css'%}" rel="stylesheet" />
+  <link href="{%static 'vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet" />
+  <link href="{%static 'vendor/venobox/venobox.css'%}" rel="stylesheet" />
+  <link href="{%static 'vendor/owl.carousel/assets/owl.carousel.min.css'%}" rel="stylesheet" />
+  <link href="{%static 'vendor/aos/aos.css'%}" rel="stylesheet" />
+
+  <!-- Template Main CSS File -->
+  <link href="{%static 'css/style.css'%}" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0px auto;
+      padding: 0px;
+      text-align: center;
+    }
+
+    .cont_principal {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgb(250, 249, 247);
+      background: -moz-linear-gradient(-45deg, rgba(250, 249, 247, 1) 0%, rgba(221, 218, 209, 1) 100%);
+      background: -webkit-linear-gradient(-45deg, rgba(250, 249, 247, 1) 0%, rgba(221, 218, 209, 1) 100%);
+      background: linear-gradient(135deg, rgba(250, 249, 247, 1) 0%, rgba(221, 218, 209, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#faf9f7', endColorstr='#dddad1', GradientType=1);
+    }
+
+    .cont_centrar {
+      position: relative;
+      width: 500px;
+    }
+
+    .cont_todo_list_top {
+      position: relative;
+      float: left;
+      width: 100%;
+      height: 60px;
+      margin-top: 20px;
+      box-shadow: 1px 15px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .cont_titulo_cont>h3 {
+      text-spacign: 2px;
+      text-align: left;
+      margin-left: 25px;
+      letter-spacing: 7px;
+      font-size: 12px;
+      color: #fff;
+      font-weight: 400;
+      margin-top: 23px;
+    }
+
+
+
+
+    .cont_titulo_cont {
+      position: relative;
+      float: left;
+      width: 430px;
+      height: 60px;
+      background: rgb(42, 72, 107);
+      background: -moz-linear-gradient(left, rgba(42, 72, 107, 1) 0%, rgba(80, 122, 167, 1) 100%);
+      background: -webkit-linear-gradient(left, rgba(42, 72, 107, 1) 0%, rgba(80, 122, 167, 1) 100%);
+      background: linear-gradient(to right, rgba(42, 72, 107, 1) 0%, rgba(80, 122, 167, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2a486b', endColorstr='#507aa7', GradientType=1);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+
+    .cont_add_titulo_cont {
+      position: relative;
+      float: left;
+      width: 70px;
+      height: 60px;
+      background: rgb(42, 72, 107);
+      background: -moz-linear-gradient(left, rgba(42, 72, 107, 1) 0%, rgba(80, 122, 167, 1) 100%);
+      background: -webkit-linear-gradient(left, rgba(42, 72, 107, 1) 0%, rgba(80, 122, 167, 1) 100%);
+      background: linear-gradient(to right, rgba(42, 72, 107, 1) 0%, rgba(80, 122, 167, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#2a486b', endColorstr='#507aa7', GradientType=1);
+
+    }
+
+    .cont_add_titulo_cont>a {
+      display: block;
+      color: #fff;
+      font-size: 32px;
+      margin-top: 14px;
+    }
+
+    body {
+      background: rgb(250, 249, 247);
+      background: -moz-linear-gradient(-45deg, rgba(250, 249, 247, 1) 0%, rgba(221, 218, 209, 1) 100%);
+      background: -webkit-linear-gradient(-45deg, rgba(250, 249, 247, 1) 0%, rgba(221, 218, 209, 1) 100%);
+      background: linear-gradient(135deg, rgba(250, 249, 247, 1) 0%, rgba(221, 218, 209, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#faf9f7', endColorstr='#dddad1', GradientType=1);
+
+    }
+
+    .cont_crear_new {
+      position: relative;
+      float: left;
+      width: 100%;
+      -webkit-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;
+      /* Propiedades Desactivadores */
+      -webkit-transform: scale(0, 0);
+      -ms-transform: scale(0, 0);
+      -o-transform: scale(0, 0);
+      transform: scale(0, 0);
+      height: 0px;
+      margin: 0px;
+
+    }
+
+    .cont_crear_new_active {
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      -o-transform: scale(1);
+      transform: scale(1);
+      height: 0px;
+      margin: 10px 0px;
+      height: 190px;
+    }
+
+    .cont_add_titulo_cont>a>i {
+      transition: all 0.2s;
+      -webkit-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      transition: all 0.2s;
+    }
+
+    .cont_add_titulo_cont_active>a>i {
+      -webkit-transform: rotate(130deg);
+      -ms-transform: rotate(130deg);
+      -o-transform: rotate(130deg);
+      transform: rotate(130deg);
+    }
+
+    .table th {
+      font-size: 14px;
+      font-family: 'Open Sans', sans-serif;
+      color: #607D8B;
+    }
+
+    .table td {
+      width: 33.33%;
+    }
+
+    .table td select {
+      width: 100%;
+      padding: 10px 0px;
+      background-color: #fff;
+      box-shadow: 1px 5px 10px -5px rgba(0, 0, 0, 0.5);
+      text-align: left;
+    }
+
+    .table td input {
+      width: 93%;
+      padding: 10px 2%;
+      background-color: #fff;
+      border: none;
+      box-shadow: 1px 5px 10px -5px rgba(0, 0, 0, 0.5);
+      text-align: left;
+      outline: none;
+    }
+
+    .btn_add_fin {
+      position: relative;
+      padding: 10px 20px;
+      background-color: #4C75A1;
+      border: none;
+      margin: 10px auto;
+      box-shadow: 1px 5px 10px -5px rgba(0, 0, 0, 0.5);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .titl_description {
+      padding-top: 10px;
+      text-align: left;
+      margin-left: 6%;
+      position: relative;
+      float: left;
+    }
+
+
+
+    .cont_princ_lists {
+      position: relative;
+      float: left;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .cont_princ_lists>ul>li {
+      margin: 2px;
+      position: relative;
+      float: left;
+      width: 100%;
+      height: 55px;
+      left: 0;
+      background-color: #F1F1EF;
+      list-style: none;
+      box-shadow: 1px 10px 20px 0px rgba(218, 215, 206, 0.8);
+      z-index: 2;
+      -webkit-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;
+    }
+
+    .col_md_1_list {
+      width: 125px;
+      position: relative;
+      float: right;
+      height: 20px;
+      top: 50%;
+      margin-top: -10px;
+    }
+
+    .col_md_1_list>p {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .col_md_2_list {
+      width: 250px;
+      position: relative;
+      float: left;
+      margin-top: 20px;
+      padding-left: 10mm;
+    }
+
+    .col_md_2_list>h4 {
+      text-align: left;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .col_md_2_list>p {
+      text-align: left;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #999;
+    }
+
+
+
+    .col_md_3_list {
+      width: 121px;
+      position: relative;
+      float: left;
+      height: 14px;
+      top: 50%;
+      margin-top: -10px;
+    }
+
+    .col_md_3_list>.cont_text_date {
+      text-align: right;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .col_md_3_list>.cont_text_date>p {
+      text-align: right;
+      margin-right: 20px;
+    }
+
+    .col_md_3_list>.cont_btns_options {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      -webkit-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      transition: all 0.5s;
+      background-color: #F1F1EF;
+      width: 100%;
+      height: 47px;
+      top: 0px;
+    }
+
+    .col_md_3_list>.cont_btns_options>ul>li {
+      position: absolute;
+      float: right;
+      width: 10%;
+      list-style-type: none;
+    }
+
+    .col_md_3_list>.cont_btns_options>ul>li>a {
+      display: block;
+      width: 20px;
+      height: 15px;
+      background-color: #4C75A1;
+      padding: 5px 3px;
+      border-radius: 50%;
+      color: #fff;
+      margin-top: -5px;
+    }
+
+    .col_md_3_list>.cont_btns_options>ul>li>a>i {
+      font-size: 15px;
+    }
+
+    .list_dsp_none {
+      display: none;
+      opacity: 0;
+      margin-top: 20px;
+    }
+
+    .list_dsp_true {
+      margin: 0px;
+      opacity: 1;
+    }
+
+
+    .list_work {
+      z-index: 1;
+    }
+
+    .list_shopping>.col_md_1_list {
+      border-left: 4px solid #e45;
+      color: #e45;
+    }
+
+    .list_work>.col_md_1_list {
+      border-left: 4px solid #2A476B;
+      color: #2A476B;
+    }
+
+    .list_sport>.col_md_1_list {
+      border-left: 4px solid #EF8A18;
+      color: #EF8A18;
+    }
+
+    .list_music>.col_md_1_list {
+      border-left: 4px solid #EE1E65;
+      color: #EE1E65;
+    }
+
+    .list_finish_state {
+      opacity: 0.3;
+      margin: 15px 0px;
+      z-index: 1;
+    }
+  </style>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -11,25 +368,12 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  
+
   <link href="{%static 'img/favicon.png'%}" rel="icon" />
-  <link href="{%static 'img/apple-touch-icon.png'%}" rel="apple-touch-icon"/>
+  <link href="{%static 'img/apple-touch-icon.png'%}" rel="apple-touch-icon" />
 
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-
-  <!-- Vendor CSS Files -->
-  <link href="{%static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet"/>
-  <link href="{%static 'vendor/icofont/icofont.min.css'%}" rel="stylesheet"/>
-  <link href="{%static 'vendor/boxicons/css/boxicons.min.css'%}" rel="stylesheet"/>
-  <link href="{%static 'vendor/venobox/venobox.css'%}" rel="stylesheet"/>
-  <link href="{%static 'vendor/owl.carousel/assets/owl.carousel.min.css'%}" rel="stylesheet"/>
-  <link href="{%static 'vendor/aos/aos.css'%}" rel="stylesheet"/>
-
-  <!-- Template Main CSS File -->
-  <link href="{%static 'css/style.css'%}" rel="stylesheet"/>
 
   <!-- =======================================================
   * Template Name: iPortfolio - v1.4.1
@@ -91,7 +435,9 @@
 
         <div class="section-title">
           <h2>About</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+            in iste officiis commodi quidem hic quas.</p>
         </div>
 
         <div class="row">
@@ -101,7 +447,8 @@
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>UI/UX Designer &amp; Web Developer.</h3>
             <p class="font-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+              dolore
               magna aliqua.
             </p>
             <div class="row">
@@ -123,8 +470,10 @@
               </div>
             </div>
             <p>
-              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
-              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
+              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et
+              ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
+              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque.
+              Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
             </p>
           </div>
         </div>
@@ -138,7 +487,9 @@
 
         <div class="section-title">
           <h2>Facts</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+            in iste officiis commodi quidem hic quas.</p>
         </div>
 
         <div class="row no-gutters">
@@ -186,7 +537,9 @@
 
         <div class="section-title">
           <h2>Skills</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+            in iste officiis commodi quidem hic quas.</p>
         </div>
 
         <div class="row skills-content">
@@ -196,21 +549,24 @@
             <div class="progress">
               <span class="skill">HTML <i class="val">100%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                </div>
               </div>
             </div>
 
             <div class="progress">
               <span class="skill">CSS <i class="val">90%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                </div>
               </div>
             </div>
 
             <div class="progress">
               <span class="skill">JavaScript <i class="val">75%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                </div>
               </div>
             </div>
 
@@ -221,21 +577,24 @@
             <div class="progress">
               <span class="skill">PHP <i class="val">80%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                </div>
               </div>
             </div>
 
             <div class="progress">
               <span class="skill">WordPress/CMS <i class="val">90%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                </div>
               </div>
             </div>
 
             <div class="progress">
               <span class="skill">Photoshop <i class="val">55%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
+                </div>
               </div>
             </div>
 
@@ -249,67 +608,69 @@
     <!-- ======= Select Guru Section ======= -->
     <section id="resume" class="resume">
       <div class="container">
-
+ 
         <div class="section-title">
           <h2>Enter Codeforces Handles of Mentors</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+            in iste officiis commodi quidem hic quas.</p>
         </div>
 
-    <section id="contact" class="contact">
-      <div class="container">
+        <section id="contact" class="contact">
+          <div class="body_guru_list" data-aos="fade-in">
+            <div>
+              <div class="cont_centrar">
 
+                <div class="cont_todo_list_top">
+                  <div class="cont_titulo_cont">
+                    <h3>THINGS TO DO</h3>
+                  </div>
+                  <div class="cont_add_titulo_cont"><a href="#e" onclick="add_new()"><i class="material-icons">&#xE145;</i></a>
+                  </div>
 
-        <div class="row" data-aos="fade-in">
+                  <!--   End cont_todo_list_top  -->
+                </div>
+                <div class="cont_crear_new">
+                  <table class="table">
 
-          <div class="col-lg-8 mt-0 mt-lg-8 d-flex align-items-stretch">
-            <form action="guru_list" method="post" role="form" class="php-email-form">
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="name">Handle 1</label>
-                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:3" data-msg="Please enter at least 3 chars" />
-                  <div class="validate"></div>
+                    <tr>
+                      <th class="titl_description">Description</th>
+                    </tr>
+                    
+                    <tr>
+                      <td colspan="3">
+                        <input type="text" name='guru_hand' class="input_description" required />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="3">
+                        <button type='button' class="btn_add_fin" onclick="add_to_list()">ADD</button>
+                          
+                      </td>
+                    </tr>
+                  </table>
+                  <!--   End cont_crear_new  -->
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:3" data-msg="Please enter at least 3 chars" />
-                  <div class="validate"></div>
+
+                <div class="cont_princ_lists">
+                  <ul id='guru_list'>
+                    
+                    <!-- <li class="list_work"></li>
+          <li class="list_sport"></li>
+          <li class="list_music"></li>
+         -->
+                  </ul>
+                  <!--   End cont_todo_list_top  -->
                 </div>
+
+                <!--   End cont_central  -->
               </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:3" data-msg="Please enter at least 3 chars" />
-                  <div class="validate"></div>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:3" data-msg="Please enter at least 3 chars" />
-                  <div class="validate"></div>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:3" data-msg="Please enter at least 3 chars" />
-                  <div class="validate"></div>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:3" data-msg="Please enter at least 3 chars" />
-                  <div class="validate"></div>
-                </div>
-              </div>
-              
-              <div class="text-center"><button type="submit">Save List</button></div>
-            </form>
+            </div>
+
           </div>
+        </section><!-- End Contact Section -->
 
-        </div>
 
-      </div>
-    </section><!-- End Contact Section -->
-
-        
 
       </div>
     </section><!-- End Resume Section -->
@@ -320,7 +681,9 @@
 
         <div class="section-title">
           <h2>Portfolio</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+            in iste officiis commodi quidem hic quas.</p>
         </div>
 
         <div class="row" data-aos="fade-up">
@@ -340,7 +703,8 @@
             <div class="portfolio-wrap">
               <img src="img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i class="bx bx-plus"></i></a>
+                <a href="img/portfolio/portfolio-1.jpg" data-gall="portfolioGallery" class="venobox" title="App 1"><i
+                    class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
@@ -350,7 +714,8 @@
             <div class="portfolio-wrap">
               <img src="img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="img/portfolio/portfolio-2.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="img/portfolio/portfolio-2.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i
+                    class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
@@ -360,7 +725,8 @@
             <div class="portfolio-wrap">
               <img src="img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="img/portfolio/portfolio-3.jpg" data-gall="portfolioGallery" class="venobox" title="App 2"><i class="bx bx-plus"></i></a>
+                <a href="img/portfolio/portfolio-3.jpg" data-gall="portfolioGallery" class="venobox" title="App 2"><i
+                    class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
@@ -370,7 +736,8 @@
             <div class="portfolio-wrap">
               <img src="img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="img/portfolio/portfolio-4.jpg" data-gall="portfolioGallery" class="venobox" title="Card 2"><i class="bx bx-plus"></i></a>
+                <a href="img/portfolio/portfolio-4.jpg" data-gall="portfolioGallery" class="venobox" title="Card 2"><i
+                    class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
@@ -380,7 +747,8 @@
             <div class="portfolio-wrap">
               <img src="img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="img/portfolio/portfolio-5.jpg" data-gall="portfolioGallery" class="venobox" title="Web 2"><i class="bx bx-plus"></i></a>
+                <a href="img/portfolio/portfolio-5.jpg" data-gall="portfolioGallery" class="venobox" title="Web 2"><i
+                    class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
@@ -390,7 +758,8 @@
             <div class="portfolio-wrap">
               <img src="img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="img/portfolio/portfolio-6.jpg" data-gall="portfolioGallery" class="venobox" title="App 3"><i class="bx bx-plus"></i></a>
+                <a href="img/portfolio/portfolio-6.jpg" data-gall="portfolioGallery" class="venobox" title="App 3"><i
+                    class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
@@ -400,7 +769,8 @@
             <div class="portfolio-wrap">
               <img src="img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="img/portfolio/portfolio-7.jpg" data-gall="portfolioGallery" class="venobox" title="Card 1"><i class="bx bx-plus"></i></a>
+                <a href="img/portfolio/portfolio-7.jpg" data-gall="portfolioGallery" class="venobox" title="Card 1"><i
+                    class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
@@ -410,7 +780,8 @@
             <div class="portfolio-wrap">
               <img src="img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="img/portfolio/portfolio-8.jpg" data-gall="portfolioGallery" class="venobox" title="Card 3"><i class="bx bx-plus"></i></a>
+                <a href="img/portfolio/portfolio-8.jpg" data-gall="portfolioGallery" class="venobox" title="Card 3"><i
+                    class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
@@ -420,7 +791,8 @@
             <div class="portfolio-wrap">
               <img src="img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
               <div class="portfolio-links">
-                <a href="img/portfolio/portfolio-9.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i class="bx bx-plus"></i></a>
+                <a href="img/portfolio/portfolio-9.jpg" data-gall="portfolioGallery" class="venobox" title="Web 3"><i
+                    class="bx bx-plus"></i></a>
                 <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
               </div>
             </div>
@@ -437,39 +809,47 @@
 
         <div class="section-title">
           <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+            in iste officiis commodi quidem hic quas.</p>
         </div>
 
         <div class="row">
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
             <div class="icon"><i class="icofont-computer"></i></div>
             <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
+              occaecati cupiditate non provident</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
             <div class="icon"><i class="icofont-chart-bar-graph"></i></div>
             <h4 class="title"><a href="">Dolor Sitema</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat tarad limino ata</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
             <div class="icon"><i class="icofont-earth"></i></div>
             <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
+            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+              fugiat nulla pariatur</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
             <div class="icon"><i class="icofont-image"></i></div>
             <h4 class="title"><a href="">Magni Dolores</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
             <div class="icon"><i class="icofont-settings"></i></div>
             <h4 class="title"><a href="">Nemo Enim</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+              voluptatum deleniti atque</p>
           </div>
           <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
             <div class="icon"><i class="icofont-tasks-alt"></i></div>
             <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
+              soluta nobis est eligendi</p>
           </div>
         </div>
 
@@ -482,7 +862,9 @@
 
         <div class="section-title">
           <h2>Testimonials</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+            in iste officiis commodi quidem hic quas.</p>
         </div>
 
         <div class="owl-carousel testimonials-carousel">
@@ -490,7 +872,8 @@
           <div class="testimonial-item" data-aos="fade-up">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+              Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium
+              quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
             <img src="img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
@@ -501,7 +884,8 @@
           <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+              Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis
+              quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
             <img src="img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
@@ -512,7 +896,8 @@
           <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+              Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor
+              labore quem eram duis noster aute amet eram fore quis sint minim.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
             <img src="img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
@@ -523,7 +908,8 @@
           <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+              Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim
+              dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
             <img src="img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
@@ -534,7 +920,8 @@
           <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
             <p>
               <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-              Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+              Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa
+              labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
               <i class="bx bxs-quote-alt-right quote-icon-right"></i>
             </p>
             <img src="img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
@@ -553,7 +940,9 @@
 
         <div class="section-title">
           <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
+            consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
+            in iste officiis commodi quidem hic quas.</p>
         </div>
 
         <div class="row" data-aos="fade-in">
@@ -578,7 +967,9 @@
                 <p>+1 5589 55488 55s</p>
               </div>
 
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+                frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
             </div>
 
           </div>
@@ -588,23 +979,27 @@
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                  <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4"
+                    data-msg="Please enter at least 4 chars" />
                   <div class="validate"></div>
                 </div>
                 <div class="form-group col-md-6">
                   <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
+                  <input type="email" class="form-control" name="email" id="email" data-rule="email"
+                    data-msg="Please enter a valid email" />
                   <div class="validate"></div>
                 </div>
               </div>
               <div class="form-group">
                 <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4"
+                  data-msg="Please enter at least 8 chars of subject" />
                 <div class="validate"></div>
               </div>
               <div class="form-group">
                 <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
+                <textarea class="form-control" name="message" rows="10" data-rule="required"
+                  data-msg="Please write something for us"></textarea>
                 <div class="validate"></div>
               </div>
               <div class="mb-3">
@@ -643,7 +1038,143 @@
 
   <!-- Vendor JS Files -->
   <link href="{%static ''%}" rel="stylesheet">
+  <script>
+    var contador = 0, select_opt = 0;
 
+    function add_to_list() {
+      // var action = document.querySelector('#action_select').value,
+      guru_handle = document.querySelector('.input_description').value;
+      // title = document.querySelector('.input_title_desc').value,
+      // date = document.getElementById('date_select').value;
+      function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+      $.ajax({
+        type: "POST",
+        url: 'guru_list/',
+        data: {
+          'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val() ,
+            "guru_handle": guru_handle,
+        },
+        dataType: "json",   
+
+        success: function (data) {
+          if(data.x == 0)
+          {
+            alert('ERROr')
+          }
+          
+
+        },
+        failure: function () {
+        }
+           
+    });
+
+      // switch (action) {
+      //   case "SHOPPING":
+      //  select_opt  = 0;
+      //     break;
+      // case "WORK":
+      // select_opt = 1; 
+      //     break;
+      // case "SPORT":
+      //  select_opt = 2;
+      //     break;
+      // case "MUSIC":
+      // select_opt = 3; 
+      //     break;
+      // }  
+
+      // var class_li  =['list_shopping list_dsp_none','list_work list_dsp_none','list_sport list_dsp_none','list_music list_dsp_none'];  
+
+      var cont = '<div class="col_md_1_list">    <p>Shooping</p>    </div> <div class="col_md_2_list"> <h4>' + guru_handle + '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>';
+
+      var li = document.createElement('li')
+      li.className = 'list_shopping list_dsp_none' + " li_num_" + contador;
+
+      li.innerHTML = cont;
+      document.querySelectorAll('.cont_princ_lists > ul')[0].appendChild(li);
+
+      setTimeout(function () {
+        document.querySelector('.li_num_' + contador).style.display = "block";
+      }, 100);
+
+      setTimeout(function () {
+        document.querySelector('.li_num_' + contador).className = "list_dsp_true " + 'list_shopping list_dsp_none' + " li_num_" + contador;
+        contador++;
+      }, 200);
+
+    }
+
+    function finish_action(num, num2) {
+
+      var class_li = ['list_shopping list_dsp_true', 'list_work  list_dsp_true', 'list_sport list_dsp_true', 'list_music list_dsp_true'];
+      console.log('.li_num_' + num2);
+      document.querySelector('.li_num_' + num2).className = class_li[num] + " list_finish_state";
+      setTimeout(function () {
+        del_finish();
+      }, 500);
+    }
+
+    function del_finish() {
+      var li = document.querySelectorAll('.list_finish_state');
+      for (var e = 0; e < li.length; e++) {
+        /* li[e].style.left = "-100px"; */
+        li[e].style.opacity = "0";
+        li[e].style.height = "0px";
+        li[e].style.margin = "0px";
+      }
+
+      setTimeout(function () {
+        var li = document.querySelectorAll('.list_finish_state');
+        for (var e = 0; e < li.length; e++) {
+          li[e].parentNode.removeChild(li[e]);
+        }
+      }, 500);
+
+
+    }
+    var t = 0;
+    function add_new() {
+     
+      if (t % 2 == 0) {
+        document.querySelector('.cont_crear_new').className = "cont_crear_new cont_crear_new_active";
+
+        document.querySelector('.cont_add_titulo_cont').className = "cont_add_titulo_cont cont_add_titulo_cont_active";
+        t++;
+      } else {
+        document.querySelector('.cont_crear_new').className = "cont_crear_new";
+        document.querySelector('.cont_add_titulo_cont').className = "cont_add_titulo_cont";
+        t++;
+      }
+    }</script>
 
 
   <script src="{%static 'vendor/jquery/jquery.min.js'%}"></script>

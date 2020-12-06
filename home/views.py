@@ -30,6 +30,7 @@ def signup(request):
 
         customUser =CustomUser(photoURL=photoURL , user=user)
         customUser.save()
+
         return redirect('/')
     else:
         return HttpResponse("Error")
@@ -47,7 +48,7 @@ def login_fn(request):
         if user is not None:
             login(request,user)
             print('welcome ' + user.username)
-            return redirect('/')
+            return redirect('/drona')
         else:
             return HttpResponse('No user found')
 
