@@ -407,7 +407,7 @@
         <ul>
           <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume"><i class="bx bx-file-blank"></i> <span>Select Mentors</span></a></li>
+          <li><a href="#resume" onclick="display_DB()"><i class="bx bx-file-blank"></i> <span>Select Mentors</span></a></li>
           <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li>
           <li><a href="#services"><i class="bx bx-server"></i> Services</a></li>
           <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
@@ -655,13 +655,6 @@
                 <div class="cont_princ_lists">
                   <ul id='guru_list'>
                     
-                    {% for guru in gurus %}
-                    <li class='list_shopping' > 
-                    <div class="col_md_1_list">    <p>Delete</p>    </div> <div class="col_md_2_list"> <h4>' + {{guru}}+ '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>
-                    </li>
-                    {% endfor %}
-
-
                     <!-- <li class="list_work"></li>
           <li class="list_sport"></li>
           <li class="list_music"></li>
@@ -1045,9 +1038,51 @@
 
   <!-- Vendor JS Files -->
   <link href="{%static ''%}" rel="stylesheet">
+
+
   <script>
     var contador = 0, select_opt = 0;
 
+    function display_DB()
+    {      
+    $.ajax({
+        type: "GET",
+        url: 'guru_list/',
+        data: {
+        },
+        dataType: "json",   
+
+        success: function (data) {
+          
+          for(guru_handle in data.guru_handles) {
+            console.log(contador)
+          var cont = '<div class="col_md_1_list">   <p onclick="finish_action( `' + contador +'`)">Delete</p>    </div> <div class="col_md_2_list"> <h4>' + data.guru_handles[guru_handle] + '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>';
+     
+          var li = document.createElement('li')
+          li.className = 'list_shopping list_dsp_none' + " li_num_" + contador;
+
+          li.innerHTML = cont;
+          document.querySelectorAll('.cont_princ_lists > ul')[0].appendChild(li);
+
+          
+            document.querySelector('.li_num_' + contador).style.display = "block";
+         
+
+         
+            document.querySelector('.li_num_' + contador).className = "list_dsp_true " + 'list_shopping list_dsp_none' + " li_num_" + contador;
+            contador++;
+          
+              }
+
+
+
+        },
+        failure: function () {
+        }
+           
+    });
+
+    }
     function add_to_list() {
       // var action = document.querySelector('#action_select').value,
       guru_handle = document.querySelector('.input_description').value;
@@ -1121,7 +1156,7 @@ $.ajaxSetup({
 
       // var class_li  =['list_shopping list_dsp_none','list_work list_dsp_none','list_sport list_dsp_none','list_music list_dsp_none'];  
 
-      var cont = '<div class="col_md_1_list">    <p>Delete</p>    </div> <div class="col_md_2_list"> <h4>' + guru_handle + '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>';
+      var cont = '<div class="col_md_1_list">    <p onclick="finish_action( `' + contador +'`)">Delete</p>    </div> <div class="col_md_2_list"> <h4>' + guru_handle + '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>';
 
       var li = document.createElement('li')
       li.className = 'list_shopping list_dsp_none' + " li_num_" + contador;
@@ -1140,11 +1175,14 @@ $.ajaxSetup({
 
     }
 
-    function finish_action(num, num2) {
+    function finish_action(num2) {
+
+      num = 0
+      console.log(num , num2);
 
       var class_li = ['list_shopping list_dsp_true', 'list_work  list_dsp_true', 'list_sport list_dsp_true', 'list_music list_dsp_true'];
       console.log('.li_num_' + num2);
-      document.querySelector('.li_num_' + num2).className = class_li[num] + " list_finish_state";
+      document.querySelector('.li_num_'+num2).className = class_li[num] + " list_finish_state";
       setTimeout(function () {
         del_finish();
       }, 500);

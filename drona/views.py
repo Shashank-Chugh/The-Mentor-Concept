@@ -34,6 +34,10 @@ def guru_list(request):
         else:
             return JsonResponse({"x":0})
 
+    elif request.is_ajax:
+        guru_handles = request.user.profile.gurus.split(' ')
+        return JsonResponse( { "guru_handles" : guru_handles  }  )
+
     else:
         return HttpResponse("ERROR")
 
