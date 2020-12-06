@@ -651,10 +651,17 @@
                   </table>
                   <!--   End cont_crear_new  -->
                 </div>
-
+                   
                 <div class="cont_princ_lists">
                   <ul id='guru_list'>
                     
+                    {% for guru in gurus %}
+                    <li class='list_shopping' > 
+                    <div class="col_md_1_list">    <p>Delete</p>    </div> <div class="col_md_2_list"> <h4>' + {{guru}}+ '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>
+                    </li>
+                    {% endfor %}
+
+
                     <!-- <li class="list_work"></li>
           <li class="list_sport"></li>
           <li class="list_music"></li>
@@ -1114,7 +1121,7 @@ $.ajaxSetup({
 
       // var class_li  =['list_shopping list_dsp_none','list_work list_dsp_none','list_sport list_dsp_none','list_music list_dsp_none'];  
 
-      var cont = '<div class="col_md_1_list">    <p>Shooping</p>    </div> <div class="col_md_2_list"> <h4>' + guru_handle + '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>';
+      var cont = '<div class="col_md_1_list">    <p>Delete</p>    </div> <div class="col_md_2_list"> <h4>' + guru_handle + '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>';
 
       var li = document.createElement('li')
       li.className = 'list_shopping list_dsp_none' + " li_num_" + contador;

@@ -3,7 +3,6 @@ from django.http import JsonResponse
 import json
 import requests
 from drona.models import Contest
-from home.models import CustomUser
 
 # Create your views here.
  
@@ -12,7 +11,10 @@ def data(URL):
     return requests.get(URL).json()
 
 def home(request):
-    return render(request, 'drona/index.html')
+    gurus = list( request.user.profile.gurus.split(' '))
+    context =   {  "gurus" : gurus }
+    # print(len(gurus))
+    return render(request, 'drona/index.html',context)
 
 def isvalid_handle(handle):
     return 1
@@ -24,13 +26,33 @@ def guru_list(request):
         guru = request.POST.get('guru_handle')
        
         if(isvalid_handle(guru)):
-            request.Customuser.gurus = request.Customuser.gurus +';'+ guru
+            print(guru , request.user.email)
+            request.user.profile.gurus = request.user.profile.gurus + guru+' '
+            request.user.save()
+            print(request.user.profile.gurus)
             return JsonResponse({"x":1})
         else:
             return JsonResponse({"x":0})
 
     else:
         return HttpResponse("ERROR")
+
+def delete_guru(request):
+    if request.is_ajax and request.method=='POST':
+        guru = request.POST.get('guru_handle')
+        
+        if guru in request.user.profile.gurus:
+            start  = gurus.index(guru)
+            end = start + len(guru)
+
+            request.user.profile.gurus = request.user.profile.gurus[:start] + request.user.profile.gurus[start+1:]
+            request.user.save()
+        else:
+            return HttpResponse('ERROR')
+    else:
+        return HttpResponse("ERROR")
+
+
 
 
 
