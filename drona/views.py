@@ -5,15 +5,30 @@ import requests
 from drona.models import Contest
 
 # Create your views here.
- 
+                  
     
 def data(URL):
     return requests.get(URL).json()
 
+def getCat():
+    return [ 
+        ['2-sat'   ,  'binary search' ,    'bitmasks'   ,  'brute force'  ,   'chinese remainder theorem'     ,'combinatorics'  ,   'constructive algorithms',     'data structures'  ,   'dfs and similar']  ,                        
+        
+        ['divide and conquer'   ,  'dp' ,    'dsu'    , 'expression parsing'   ,  'fft'  ,   'flows'  ,   'games'     ,'geometry'  ,   'graph matchings']
+        ,
+        ['graphs'  ,   'greedy'  ,   'hashing'  ,   'implementation'  ,   'interactive' ,    'math'  ,   'matrices'     ,'meet-in-the-middle'  ,   'number theory'],
+        
+        ['probabilities'  ,   'schedules'   ,  'shortest paths'  ,   'sortings' ,    'string suffix structures'     ,'strings'  ,   'ternary search'   ,  'trees'     ,'two pointers'] 
+        
+               ]
+
+
+
 def home(request):
     gurus = list( request.user.profile.gurus.split(' '))
-    context =   {  "gurus" : gurus }
-    # print(len(gurus))
+    categories = getCat()
+
+    context =   {  "gurus" : gurus  ,  "categories":categories}
     return render(request, 'drona/index.html',context)
 
 def isvalid_handle(handle):
@@ -26,7 +41,7 @@ def guru_list(request):
         guru = request.POST.get('guru_handle')
        
         if(isvalid_handle(guru)):
-            print(guru , request.user.email)
+            print(request.user.profile.gurus)
             request.user.profile.gurus = request.user.profile.gurus + guru+' '
             request.user.save()
             print(request.user.profile.gurus)
@@ -35,7 +50,8 @@ def guru_list(request):
             return JsonResponse({"x":0})
 
     elif request.is_ajax:
-        guru_handles = request.user.profile.gurus.split(' ')
+        s=request.user.profile.gurus.strip()
+        guru_handles = s.split(' ')
         return JsonResponse( { "guru_handles" : guru_handles  }  )
 
     else:
@@ -44,13 +60,17 @@ def guru_list(request):
 def delete_guru(request):
     if request.is_ajax and request.method=='POST':
         guru = request.POST.get('guru_handle')
-        
+       
         if guru in request.user.profile.gurus:
-            start  = gurus.index(guru)
+            print(request.user.profile.gurus)
+            start  = request.user.profile.gurus.index(guru)
             end = start + len(guru)
 
-            request.user.profile.gurus = request.user.profile.gurus[:start] + request.user.profile.gurus[start+1:]
+            request.user.profile.gurus = request.user.profile.gurus[:start] + request.user.profile.gurus[end+1:]
             request.user.save()
+            print(request.user.profile.gurus)
+
+            return JsonResponse(  { 'x':1 } )
         else:
             return HttpResponse('ERROR')
     else:
