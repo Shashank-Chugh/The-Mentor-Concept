@@ -9,4 +9,5 @@ urlpatterns = [
     path('delete_guru/', views.delete_guru , name='delete_guru'),
 
 
+
 ]

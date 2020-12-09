@@ -3,6 +3,7 @@ from django.http import JsonResponse
 import json
 import requests
 from drona.models import Contest
+from django.core.paginator import Paginator
 
 # Create your views here.
                   
@@ -12,17 +13,13 @@ def data(URL):
 
 def getCat():
     return [ 
-        ['2-sat'   ,  'binary search' ,    'bitmasks'   ,  'brute force'  ,   'chinese remainder theorem'     ,'combinatorics'  ,   'constructive algorithms',     'data structures'  ,   'dfs and similar']  ,                        
+        ['2-sat'   ,  'binary search' ,    'bitmasks'   ,  'brute force'  ,   'chinese remainder theorem'     ,'combinatorics'  ,   'constructive algorithms',     'data structures'  ,   'dfs and similar' ,'probabilities'  ,   'schedules'   ,  'shortest paths' ]  ,                        
         
-        ['divide and conquer'   ,  'dp' ,    'dsu'    , 'expression parsing'   ,  'fft'  ,   'flows'  ,   'games'     ,'geometry'  ,   'graph matchings']
+        ['divide and conquer'   ,  'dp' ,    'dsu'    , 'expression parsing'   ,  'fft'  ,   'flows'  ,   'games'     ,'geometry'  ,   'graph matchings',   'sortings' ,    'string suffix structures'     ,'strings']
         ,
-        ['graphs'  ,   'greedy'  ,   'hashing'  ,   'implementation'  ,   'interactive' ,    'math'  ,   'matrices'     ,'meet-in-the-middle'  ,   'number theory'],
-        
-        ['probabilities'  ,   'schedules'   ,  'shortest paths'  ,   'sortings' ,    'string suffix structures'     ,'strings'  ,   'ternary search'   ,  'trees'     ,'two pointers'] 
-        
+        ['graphs'  ,   'greedy'  ,   'hashing'  ,   'implementation'  ,   'interactive' ,    'math'  ,   'matrices'     ,'meet-in-the-middle'  ,   'number theory' ,   'ternary search'   ,  'trees'     ,'two pointers'],
+    
                ]
-
-
 
 def home(request):
     gurus = list( request.user.profile.gurus.split(' '))
@@ -55,7 +52,7 @@ def guru_list(request):
         return JsonResponse( { "guru_handles" : guru_handles  }  )
 
     else:
-        return HttpResponse("ERROR")
+        return HttpResponse("ERROR_guru_list")
 
 def delete_guru(request):
     if request.is_ajax and request.method=='POST':
@@ -72,12 +69,9 @@ def delete_guru(request):
 
             return JsonResponse(  { 'x':1 } )
         else:
-            return HttpResponse('ERROR')
+            return HttpResponse('ERROR_delete_guru')
     else:
-        return HttpResponse("ERROR")
-
-
-
+        return HttpResponse("ERROR_delete_guru")
 
 
 
@@ -108,11 +102,15 @@ def contests(request):
                 guru_contests.add(submission["problem"]["contestId"])
         
 
+    # for id in guru_contests:
+    #     if id in student_contests:
+    #         print('https://codeforces.com/contest/'+str(id) , ' green')
+    #     else :
+    #         print('https://codeforces.com/contest/'+str(id) , ' red')
+
+
     for id in guru_contests:
-        if id in student_contests:
-            print('https://codeforces.com/contest/'+str(id) , ' green')
-        else :
-            print('https://codeforces.com/contest/'+str(id) , ' red')
+        print(data("https://codeforces.com/api/contest.standings?contestId="+str(id)+"&showUnofficial=true")['result']['contest']['name'])
 
     # To be done
     # check if name retrieval possible using id in less time without api
@@ -122,12 +120,17 @@ def contests(request):
 
 def problems(request):
     #from form
-    gurus = ["coder_pulkit_c" , 'shivamsinghal1012']
+    # gurus = request.user.profile.gurus
+    # gurus = gurus.strip()
+    # gurus = gurus.split(' ')
+    gurus = ['coder_pulkit_c']
     student = "Shashank_Chugh"
+
+    tag_form = request.POST
 
     #fetch student submissions from api
     submissions_student = data("https://codeforces.com/api/user.status?handle="+student)["result"]
-    
+
     student_solved_set = set()
     guru_solved_set = set()
     guru_solved_list = []
@@ -148,14 +151,42 @@ def problems(request):
         if submission['verdict']=='OK':
             student_solved_set.add(str(submission["problem"]['contestId'])+submission["problem"]['index'])
     
+    problems_data=[]
+    sno=0
     for problem in guru_solved_list:
-        if str(problem["contestId"])+problem['index'] in student_solved_set:
-            print("https://codeforces.com/contest/"+str(problem["contestId"])+"/problem/"+problem['index'] + ' GREEN' )
-        else:
-            print("https://codeforces.com/contest/"+str(problem["contestId"])+"/problem/"+problem['index'] + ' RED' )
-
-    return render(request, 'drona/problems.html')
         
+        is_included=0
+        for tag in problem['tags']:
+            if tag_form.get(tag)=='on':
+                is_included=1
+                break
+
+        if is_included==0:
+            continue
+
+        if str(problem["contestId"])+problem['index'] not in student_solved_set:
+            # problems_data.append(str(problem["contestId"])+"/problem/"+problem['index'] ) 
+            # problems_name.append(problem['name'])  
+            # print("https://codeforces.com/contest/"+str(problem["contestId"])+"/problem/"+problem['index'] + ' RED' )
+            sno+=1
+            link = "https://codeforces.com/contest/"+str(problem["contestId"])+"/problem/"+problem['index']
+            rating  = "" 
+            if 'rating' in problem:
+                rating = problem["rating"]
+            problems_data.append(  { 'sno':sno ,'name':problem['name'] , 'rating':rating , 'link':link }           )
+
+
+    problems_data =  Paginator(problems_data,50)
+    page_no = request.GET.get('page') or 1 
+    problems_data = problems_data.get_page(page_no)
+
+    # problems_link =  Paginator(problems_link,10)
+    # page_no = request.GET.get('page') 
+    # problems_link = problems_link.get_page(page_no)
+
+    context = { 'problems_data':problems_data }
+    return render(request, 'drona/problems.html',context) 
+
         
 
 

@@ -1,11 +1,152 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}
-drona problems
-{% endblock title %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
 
-{% block body %}
-drona problems
+    
+    <!-- Bootstrap CSS -->
+    <title>Document</title>
+    <style>
+        body {
+            background: white;
+            font-family: Montserrat,sans-serif;
+        }
 
-{% endblock body %}
+        .heading {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%, 0);
+            color: black;
+            font-size: 13px;
+            font-weight: 400;
+        }
 
+        .parent {
+            position: absolute;
+            top: 5%;
+            left: 30%;
+        }
+
+        .herotext {
+            font-size: 25px;
+            color: black;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: 4px;
+        }
+
+        .herotext::first-letter {
+            color: red;
+        }
+
+        .herotext:before,
+        .herotext:after {
+            content: '';
+            position: absolute;
+            height: 2px;
+            width: 20%;
+            top: 31px;
+            background: black;
+        }
+
+        .herotext:after {
+            right: 80%;
+        }
+
+        .herotext:before {
+            left: 80%;
+        }
+
+        tr>th {
+            padding: 8px 14px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            
+        }
+
+        tr>td {
+            padding: 20px 10px;
+            color: black;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        tr {
+            transition: 230ms ease-in;
+            border-bottom: 1px solid black;
+            will-change: transform, background, cursor;
+        }
+
+        tr:not(:first-child ):hover {
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+
+        tr:first-child {
+            background: red;
+        }
+    </style>
+
+</head>
+
+<body>
+    
+    <div class="parent">
+        <table>
+            <h1 class="herotext">Problems List</h1>
+            <tr>
+                <th>Sno</th>
+                <th>Name</th>
+                <th>Rating</th>
+                <th>Bookmark</th>
+            </tr>
+           
+            {% for data in problems_data %}
+            
+                
+                
+                <tr>
+                <td>{{data.sno}}</td>
+                <td> 
+                <a href="{{data.link}}">{{data.name}}</a>                 
+                 </td>
+                <td>{{data.rating}}</td>
+                <td > {{1}} </td>
+                </tr>
+            
+               
+            {% endfor %}
+           
+
+        </table>
+
+        <div class="my-3">
+        {% if problems_data.has_other_pages %}
+    <div class="pagination">
+        {% if problems_data.has_previous %}
+                <a href="?&page={{problems_data.previous_page_number}}">Previous</a> -
+        {% endif %}
+                Page {{problems_data.number}} / {{problems_data.paginator.num_pages}}
+
+        {% if problems_data.has_next %}
+                - <a href="?page={{problems_data.next_page_number}}">Next</a>
+        {% endif %}
+        
+        </div>
+    </div>
+{% endif %} 
+
+    </div>
+ 
+
+
+</body>
+
+</html>
