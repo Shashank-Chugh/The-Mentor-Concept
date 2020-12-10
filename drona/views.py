@@ -75,7 +75,7 @@ def delete_guru(request):
 
 
 
-def contests(request):
+def contests_data(request):
     #handles from form
     gurus = ["coder_pulkit_c" , 'shivamsinghal1012']
 
@@ -93,29 +93,31 @@ def contests(request):
 
     for guru in gurus:
         fetched_data = data("https://codeforces.com/api/user.status?handle="+guru)
-        if fetched_data['status']!='OK':
-            return HttpResponse("Please enter Handles carefully")
-
+     
         submissions_guru = fetched_data["result"]
         for submission in submissions_guru:
             if submission['author']['participantType']!='PRACTICE':
                 guru_contests.add(submission["problem"]["contestId"])
         
 
-    # for id in guru_contests:
-    #     if id in student_contests:
-    #         print('https://codeforces.com/contest/'+str(id) , ' green')
-    #     else :
-    #         print('https://codeforces.com/contest/'+str(id) , ' red')
-
-
+    contests_data=[]
+    sno=1
     for id in guru_contests:
-        print(data("https://codeforces.com/api/contest.standings?contestId="+str(id)+"&showUnofficial=true")['result']['contest']['name'])
+        if id not in student_contests:
+            link= "https://codeforces.com/contest/"+str(id)
+            contests_data.append({'sno':sno,'id':id,'link':link})
+            sno+=1
 
     # To be done
     # check if name retrieval possible using id in less time without api
+    context = { "contests_data" :contests_data }
+    return JsonResponse( context  )
 
-    return render(request, 'drona/contests.html')
+def contests(request):
+     return render(request, 'drona/contests.html')
+
+
+
 
 
 def problems_data(request):
@@ -179,7 +181,7 @@ def problems_data(request):
     return JsonResponse(context) 
 
 def problems(request):
-    return render(request , 'drona/problems2.html' )
+    return render(request , 'drona/problems.html' )
 
         
 
