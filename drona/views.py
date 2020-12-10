@@ -118,7 +118,7 @@ def contests(request):
     return render(request, 'drona/contests.html')
 
 
-def problems(request):
+def problems_data(request):
     #from form
     # gurus = request.user.profile.gurus
     # gurus = gurus.strip()
@@ -155,15 +155,6 @@ def problems(request):
     sno=0
     for problem in guru_solved_list:
         
-        is_included=0
-        for tag in problem['tags']:
-            if tag_form.get(tag)=='on':
-                is_included=1
-                break
-
-        if is_included==0:
-            continue
-
         if str(problem["contestId"])+problem['index'] not in student_solved_set:
             # problems_data.append(str(problem["contestId"])+"/problem/"+problem['index'] ) 
             # problems_name.append(problem['name'])  
@@ -176,16 +167,19 @@ def problems(request):
             problems_data.append(  { 'sno':sno ,'name':problem['name'] , 'rating':rating , 'link':link }           )
 
 
-    problems_data =  Paginator(problems_data,50)
-    page_no = request.GET.get('page') or 1 
-    problems_data = problems_data.get_page(page_no)
+    # problems_data =  Paginator(problems_data,50)
+    # page_no = request.GET.get('page') or 1 
+    # problems_data = problems_data.get_page(page_no)
 
     # problems_link =  Paginator(problems_link,10)
     # page_no = request.GET.get('page') 
     # problems_link = problems_link.get_page(page_no)
 
     context = { 'problems_data':problems_data }
-    return render(request, 'drona/problems.html',context) 
+    return JsonResponse(context) 
+
+def problems(request):
+    return render(request , 'drona/problems2.html' )
 
         
 

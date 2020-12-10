@@ -8,7 +8,6 @@ class Contest(models.Model):
         return self.name 
 
 
-
      
 
     
