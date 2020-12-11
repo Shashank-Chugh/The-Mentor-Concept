@@ -22,10 +22,18 @@ def getCat():
                ]
 
 def home(request):
+    
+    contests_list = data("https://codeforces.com/api/contest.list")['result']
+
+    for contest in contests_list:
+        if Contest.objects.filter(id=contest['id']).exists():
+            break
+        Contest.objects.create(id= contest['id'], name=contest['name'] , duration=contest['durationSeconds'] , start_time=contest['startTimeSeconds'])
+      
     gurus = list( request.user.profile.gurus.split(' '))
     categories = getCat()
 
-    context =   {  "gurus" : gurus  ,  "categories":categories}
+    context =   {  "gurus" : gurus  ,  "categories":categories , 'photoURL':request.user.profile.photoURL,'name':request.user.username}
     return render(request, 'drona/index.html',context)
 
 def isvalid_handle(handle):
@@ -77,7 +85,7 @@ def delete_guru(request):
 
 def contests_data(request):
     #handles from form
-    gurus = ["coder_pulkit_c" , 'shivamsinghal1012']
+    gurus = [ 'coder_pulkit_c']
 
     #assumption student handle is correct here , already checked during login
     student = "Shashank_Chugh"
@@ -88,7 +96,7 @@ def contests_data(request):
     student_contests=set()
 
     for submission in submissions_student:
-        if submission['author']['participantType']!='PRACTICE':
+        if (submission['author']['participantType']!='PRACTICE') &  (submission["problem"]["contestId"] <100000):
             student_contests.add(submission["problem"]["contestId"])
 
     for guru in gurus:
@@ -96,7 +104,7 @@ def contests_data(request):
      
         submissions_guru = fetched_data["result"]
         for submission in submissions_guru:
-            if submission['author']['participantType']!='PRACTICE':
+            if (submission['author']['participantType']!='PRACTICE') &  (submission["problem"]["contestId"] <100000):
                 guru_contests.add(submission["problem"]["contestId"])
         
 
@@ -104,8 +112,11 @@ def contests_data(request):
     sno=1
     for id in guru_contests:
         if id not in student_contests:
+            
             link= "https://codeforces.com/contest/"+str(id)
-            contests_data.append({'sno':sno,'id':id,'link':link})
+            contest=Contest.objects.get(id=id)
+            
+            contests_data.append({'sno':sno,'link':link , 'duration':contest.duration , 'name':contest.name})
             sno+=1
 
     # To be done
@@ -115,8 +126,6 @@ def contests_data(request):
 
 def contests(request):
      return render(request, 'drona/contests.html')
-
-
 
 
 

@@ -26,10 +26,11 @@
         }
 
         .parent {
-            position: absolute;
-            top: 5%;
-            left: 30%;
+            width: 50%;
+            display: block;
+           margin:auto;
         }
+     
 
         .herotext {
             font-size: 25px;
@@ -47,18 +48,18 @@
         .herotext:after {
             content: '';
             position: absolute;
-            height: 2px;
-            width: 20%;
+            height: 3px;
+            width: 18%;
             top: 31px;
             background: black;
         }
 
         .herotext:after {
-            right: 80%;
+            right: 57%;
         }
 
         .herotext:before {
-            left: 80%;
+            left: 57%;
         }
 
         tr>th {
@@ -139,6 +140,7 @@
 
         success: function (data) {
             tableData = data.contests_data
+            console.log(tableData)
 
             /*
             1 - Loop Through Array & Access each value
@@ -226,12 +228,16 @@
             table.append(` <tr>
                 <th>Sno</th>
                 <th>Name</th>
+                <th>Duration (Minutes)</th>
+
             </tr>`)
             for (var i = 1 in myList) {
                 //Keep in mind we are using "Template Litterals to create rows"
                 var row = `<tr>
                   <td>${myList[i].sno}</td>
-                  <td>  <a href="${myList[i].link}">      ${myList[i].id}  </a></td>
+                  <td>  <a href="${myList[i].link}">      ${myList[i].name}  </a></td>
+                  <td>${myList[i].duration/60}</td>
+
                     </tr>
                   `
                 table.append(row)

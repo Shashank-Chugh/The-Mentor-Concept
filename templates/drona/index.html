@@ -20,15 +20,14 @@
   <!-- Template Main CSS File -->
   <link href="{%static 'css/style.css'%}" rel="stylesheet" />
   <style>
-
-    a{
-      color:inherit
+    a {
+      color: inherit
     }
 
     * {
       margin: 0px auto;
       padding: 0px;
-     
+
     }
 
     .cont_principal {
@@ -364,181 +363,201 @@
       margin: 15px 0px;
       z-index: 1;
     }
-     
-     .container_category {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-}
 
-  .control-group {
-  display: inline-block;
-  vertical-align: top;
-  background: #fff;
-  text-align: left;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-  padding: 30px;
-  width: 334px;
-  height: 541px;
-  margin: 10px;
-  border-radius: 17px;
-  border-color: black;
-  border-style: solid;
-  border-width: 3px;
+    .container_category {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
 
-}
-.control {
-  display: block;
-  position: relative;
-  padding-left: 30px;
-  margin-bottom: 15px;
-  cursor: pointer;
-  font-size: 18px;
-  font-family: 'Source Sans Pro', sans-serif
-}
-.control input {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-}
-.control__indicator {
-  position: absolute;
-  top: 2px;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background: #e6e6e6;
-}
-.control--radio .control__indicator {
-  border-radius: 50%;
-}
-.control:hover input ~ .control__indicator,
-.control input:focus ~ .control__indicator {
-  background: #ccc;
-}
-.control input:checked ~ .control__indicator {
-  background: #2aa1c0;
-}
-.control:hover input:not([disabled]):checked ~ .control__indicator,
-.control input:checked:focus ~ .control__indicator {
-  background: #0e647d;
-}
-.control input:disabled ~ .control__indicator {
-  background: #e6e6e6;
-  opacity: 0.6;
-  pointer-events: none;
-}
-.control__indicator:after {
-  content: '';
-  position: absolute;
-  display: none;
-}
-.control input:checked ~ .control__indicator:after {
-  display: block;
-}
-.control--checkbox .control__indicator:after {
-  left: 8px;
-  top: 4px;
-  width: 5px;
-  height: 11px;
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-.control--checkbox input:disabled ~ .control__indicator:after {
-  border-color: #7b7b7b;
-}
-.control--radio .control__indicator:after {
-  left: 7px;
-  top: 7px;
-  height: 6px;
-  width: 6px;
-  border-radius: 50%;
-  background: #fff;
-}
-.control--radio input:disabled ~ .control__indicator:after {
-  background: #7b7b7b;
-}
+    .control-group {
+      display: inline-block;
+      vertical-align: top;
+      background: #fff;
+      text-align: left;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      width: 334px;
+      height: 541px;
+      margin: 10px;
+      border-radius: 17px;
+      border-color: black;
+      border-style: solid;
+      border-width: 3px;
 
-.contest_body{
-  margin-left: 108mm;
-}
+    }
 
-.button_contest {
-  background: none;
-  border: 0;
-  box-sizing: border-box;
-  margin: 1em;
-  padding: 1em 2em;
-  box-shadow: inset 0 0 0 2px #f45e61;
-  color: #f45e61;
-  font-size:x-large;
-  font-weight: 700;
-  position: relative;
-  vertical-align: middle;
+    .control {
+      display: block;
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      font-size: 18px;
+      font-family: 'Source Sans Pro', sans-serif
+    }
 
+    .control input {
+      position: absolute;
+      z-index: -1;
+      opacity: 0;
+    }
 
-}
-.button_contest::before, .button_contest::after {
-  box-sizing: inherit;
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-}
+    .control__indicator {
+      position: absolute;
+      top: 2px;
+      left: 0;
+      height: 20px;
+      width: 20px;
+      background: #e6e6e6;
+    }
 
-.spin {
-  width: 5em;
-  height: 5em;
-  padding: 0;
-}
-.spin:hover {
-  color: #0eb7da;
-}
-.spin::before, .spin::after {
-  top: 0;
-  left: 0;
-}
-.spin::before {
-  border: 2px solid transparent;
-}
-.spin:hover::before {
-  border-top-color: #0eb7da;
-  border-right-color: #0eb7da;
-  border-bottom-color: #0eb7da;
-  -webkit-transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
-  transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
-}
-.spin::after {
-  border: 0 solid transparent;
-}
-.spin:hover::after {
-  border-top: 2px solid #0eb7da;
-  border-left-width: 2px;
-  border-right-width: 2px;
-  -webkit-transform: rotate(270deg);
-          transform: rotate(270deg);
-  -webkit-transition: border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s;
-  transition: border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s;
-  transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s;
-  transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s;
-}
+    .control--radio .control__indicator {
+      border-radius: 50%;
+    }
 
-.circle {
-  border-radius: 100%;
-  box-shadow: none;
-}
-.circle::before, .circle::after {
-  border-radius: 100%;
-}
+    .control:hover input~.control__indicator,
+    .control input:focus~.control__indicator {
+      background: #ccc;
+    }
+
+    .control input:checked~.control__indicator {
+      background: #2aa1c0;
+    }
+
+    .control:hover input:not([disabled]):checked~.control__indicator,
+    .control input:checked:focus~.control__indicator {
+      background: #0e647d;
+    }
+
+    .control input:disabled~.control__indicator {
+      background: #e6e6e6;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .control__indicator:after {
+      content: '';
+      position: absolute;
+      display: none;
+    }
+
+    .control input:checked~.control__indicator:after {
+      display: block;
+    }
+
+    .control--checkbox .control__indicator:after {
+      left: 8px;
+      top: 4px;
+      width: 5px;
+      height: 11px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .control--checkbox input:disabled~.control__indicator:after {
+      border-color: #7b7b7b;
+    }
+
+    .control--radio .control__indicator:after {
+      left: 7px;
+      top: 7px;
+      height: 6px;
+      width: 6px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .control--radio input:disabled~.control__indicator:after {
+      background: #7b7b7b;
+    }
+
+    .contest_body {
+      margin-left: 108mm;
+    }
+
+    .button_contest {
+      background: none;
+      border: 0;
+      box-sizing: border-box;
+      margin: 1em;
+      padding: 1em 2em;
+      box-shadow: inset 0 0 0 2px #f45e61;
+      color: #f45e61;
+      font-size: x-large;
+      font-weight: 700;
+      position: relative;
+      vertical-align: middle;
 
 
+    }
 
+    .button_contest::before,
+    .button_contest::after {
+      box-sizing: inherit;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
 
+    .spin {
+      width: 5em;
+      height: 5em;
+      padding: 0;
+    }
 
+    .spin:hover {
+      color: #0eb7da;
+    }
+
+    .spin::before,
+    .spin::after {
+      top: 0;
+      left: 0;
+    }
+
+    .spin::before {
+      border: 2px solid transparent;
+    }
+
+    .spin:hover::before {
+      border-top-color: #0eb7da;
+      border-right-color: #0eb7da;
+      border-bottom-color: #0eb7da;
+      -webkit-transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
+      transition: border-top-color 0.15s linear, border-right-color 0.15s linear 0.1s, border-bottom-color 0.15s linear 0.2s;
+    }
+
+    .spin::after {
+      border: 0 solid transparent;
+    }
+
+    .spin:hover::after {
+      border-top: 2px solid #0eb7da;
+      border-left-width: 2px;
+      border-right-width: 2px;
+      -webkit-transform: rotate(270deg);
+      transform: rotate(270deg);
+      -webkit-transition: border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s;
+      transition: border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s;
+      transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s;
+      transition: transform 0.4s linear 0s, border-left-width 0s linear 0.35s, -webkit-transform 0.4s linear 0s;
+    }
+
+    .circle {
+      border-radius: 100%;
+      box-shadow: none;
+    }
+
+    .circle::before,
+    .circle::after {
+      border-radius: 100%;
+    }
   </style>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -572,8 +591,8 @@
     <div class="d-flex flex-column">
 
       <div class="profile">
-        <img src="img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Alex Smith</a></h1>
+        <img src="{{ photoURL }}" alt="" class="img-fluid rounded-circle">
+        <h1 class="text-light">{{name}}</h1>
         <div class="social-links mt-3 text-center">
           <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
           <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -585,9 +604,10 @@
 
       <nav class="nav-menu">
         <ul>
-          <li class="active"><a href="index.html"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li class="active"><a href="/drona"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="#about"><i class="bx bx-user"></i> <span>About</span></a></li>
-          <li><a href="#resume" onclick="display_DB()"><i class="bx bx-file-blank"></i> <span>Select Mentors</span></a></li>
+          <li><a href="#resume" onclick="display_DB()"><i class="bx bx-file-blank"></i> <span>Select Mentors</span></a>
+          </li>
           <li><a href="#portfolio"><i class="bx bx-book-content"></i> Portfolio</a></li>
           <li><a href="#services"><i class="bx bx-server"></i> Services</a></li>
           <li><a href="#contact"><i class="bx bx-envelope"></i> Contact</a></li>
@@ -788,7 +808,7 @@
     <!-- ======= Select Guru Section ======= -->
     <section id="resume" class="resume">
       <div class="container">
- 
+
         <div class="section-title">
           <h2>Enter Codeforces Handles of Mentors</h2>
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
@@ -796,58 +816,59 @@
             in iste officiis commodi quidem hic quas.</p>
         </div>
 
-          <div class="body_guru_list" data-aos="fade-in">
-            <div>
-              <div class="cont_centrar">
+        <div class="body_guru_list" data-aos="fade-in">
+          <div>
+            <div class="cont_centrar">
 
-                <div class="cont_todo_list_top">
-                  <div class="cont_titulo_cont">
-                    <h3>THINGS TO DO</h3>
-                  </div>
-                  <div class="cont_add_titulo_cont"><a href="#e" onclick="add_new()"><i class="material-icons">&#xE145;</i></a>
-                  </div>
-
-                  <!--   End cont_todo_list_top  -->
+              <div class="cont_todo_list_top">
+                <div class="cont_titulo_cont">
+                  <h3>THINGS TO DO</h3>
                 </div>
-                <div class="cont_crear_new">
-                  <table class="table">
-
-                    <tr>
-                      <th class="titl_description">Description</th>
-                    </tr>
-                    
-                    <tr>
-                      <td colspan="3">
-                        <input type="text" name='guru_hand' class="input_description" required />
-                      </td>
-                    </tr>
-                    <tr>
-                      <td colspan="3">
-                        <button type='button' class="btn_add_fin" onclick="add_to_list()">ADD</button>
-                          
-                      </td>
-                    </tr>
-                  </table>
-                  <!--   End cont_crear_new  -->
+                <div class="cont_add_titulo_cont"><a href="#e" onclick="add_new()"><i
+                      class="material-icons">&#xE145;</i></a>
                 </div>
-                   
-                <div class="cont_princ_lists">
-                  <ul id='guru_list'>
-                    
-                    <!-- <li class="list_work"></li>
+
+                <!--   End cont_todo_list_top  -->
+              </div>
+              <div class="cont_crear_new">
+                <table class="table">
+
+                  <tr>
+                    <th class="titl_description">Description</th>
+                  </tr>
+
+                  <tr>
+                    <td colspan="3">
+                      <input type="text" name='guru_hand' class="input_description" required />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">
+                      <button type='button' class="btn_add_fin" onclick="add_to_list()">ADD</button>
+
+                    </td>
+                  </tr>
+                </table>
+                <!--   End cont_crear_new  -->
+              </div>
+
+              <div class="cont_princ_lists">
+                <ul id='guru_list'>
+
+                  <!-- <li class="list_work"></li>
           <li class="list_sport"></li>
           <li class="list_music"></li>
          -->
-                  </ul>
-                  <!--   End cont_todo_list_top  -->
-                </div>
-
-                <!--   End cont_central  -->
+                </ul>
+                <!--   End cont_todo_list_top  -->
               </div>
-            </div>
 
+              <!--   End cont_central  -->
+            </div>
           </div>
-       
+
+        </div>
+
 
 
 
@@ -865,10 +886,10 @@
             in iste officiis commodi quidem hic quas.</p>
         </div>
 
-        
-<section class="contest_body">
-   <a href="contests/">   <button class="spin circle button_contest">  Click ! </button></a>  
-</section>
+
+        <section class="contest_body">
+          <a href="contests/"> <button class="spin circle button_contest"> Click ! </button></a>
+        </section>
 
 
       </div>
@@ -886,25 +907,25 @@
         </div>
 
 
-        <form action="problems/" method='POST' >
+        <form action="problems/" method='POST'>
           {% csrf_token %}
           <div class="container_category">
-          {% for i in categories %}
+            {% for i in categories %}
             <div class="control-group">
-            {% for category in i %}
-            <label class="control control--checkbox">{{category}}
-            <input type="checkbox" name="{{category}}" />
-            <div class="control__indicator"></div>
-            </label>
-            {% endfor %}
+              {% for category in i %}
+              <label class="control control--checkbox">{{category}}
+                <input type="checkbox" name="{{category}}" />
+                <div class="control__indicator"></div>
+              </label>
+              {% endfor %}
             </div>
-          {% endfor %}
-          <button type="submit" class="btn btn-outline-danger btn-lg"> <strong>Apply</strong> </button>
-  
+            {% endfor %}
+            <button type="submit" class="btn btn-outline-danger btn-lg"> <strong>Apply</strong> </button>
+
           </div>
         </form>
 
-        
+
 
       </div>
     </section><!-- End Services Section -->
@@ -1094,45 +1115,44 @@
 
 
   <script>
-    var contador = 0, select_opt = 0,previous=-1;
+    var contador = 0, select_opt = 0, previous = -1;
 
-    function display_DB()
-    {      
-    $.ajax({
+    function display_DB() {
+      $.ajax({
         type: "GET",
         url: 'guru_list/',
         data: {
         },
-        dataType: "json",   
+        dataType: "json",
 
         success: function (data) {
-          
-          for(guru_handle in data.guru_handles) {
-          var cont = '<div class="col_md_1_list">   <p onclick="finish_action( `' + contador +'`,`' + data.guru_handles[guru_handle]  + '`  )">Delete</p>    </div> <div class="col_md_2_list"> <h4>' + data.guru_handles[guru_handle] + '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>';
-     
-          var li = document.createElement('li')
-          li.className = 'list_shopping list_dsp_none' + " li_num_" + contador;
 
-          li.innerHTML = cont;
-          document.querySelectorAll('.cont_princ_lists > ul')[0].appendChild(li);
+          for (guru_handle in data.guru_handles) {
+            var cont = '<div class="col_md_1_list">   <p onclick="finish_action( `' + contador + '`,`' + data.guru_handles[guru_handle] + '`  )">Delete</p>    </div> <div class="col_md_2_list"> <h4>' + data.guru_handles[guru_handle] + '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>';
 
-          
+            var li = document.createElement('li')
+            li.className = 'list_shopping list_dsp_none' + " li_num_" + contador;
+
+            li.innerHTML = cont;
+            document.querySelectorAll('.cont_princ_lists > ul')[0].appendChild(li);
+
+
             document.querySelector('.li_num_' + contador).style.display = "block";
-         
 
-         
+
+
             document.querySelector('.li_num_' + contador).className = "list_dsp_true " + 'list_shopping list_dsp_none' + " li_num_" + contador;
-            contador++,previous++;
-          
-              }
+            contador++, previous++;
+
+          }
 
 
 
         },
         failure: function () {
         }
-           
-    });
+
+      });
 
     }
     function add_to_list() {
@@ -1141,7 +1161,7 @@
       // title = document.querySelector('.input_title_desc').value,
       // date = document.getElementById('date_select').value;
 
-       var cont = '<div class="col_md_1_list">    <p onclick="finish_action( `' + contador +'`,`' + guru_handle  + '` )">Delete</p>    </div> <div class="col_md_2_list"> <h4>' + guru_handle + '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>';
+      var cont = '<div class="col_md_1_list">    <p onclick="finish_action( `' + contador + '`,`' + guru_handle + '` )">Delete</p>    </div> <div class="col_md_2_list"> <h4>' + guru_handle + '</h4></div>    <div class="col_md_3_list"> <div class="cont_btns_options">    <ul>  <li><a href="#finish" onclick="finish_action(' + select_opt + ',' + contador + ');" ><i class="material-icons">&#xE5CA;</i></a></li>   </ul>  </div>    </div>';
 
       var li = document.createElement('li')
       li.className = 'list_shopping list_dsp_none' + " li_num_" + contador;
@@ -1151,75 +1171,73 @@
       document.querySelectorAll('.cont_princ_lists > ul')[0].appendChild(li);
 
 
-      if(contador!=previous)
-       {
+      if (contador != previous) {
 
-          previous++;
-          console.log(document.querySelector('.li_num_' + contador))
-      setTimeout(function () {
-        document.querySelector('.li_num_' + contador).style.display = "block";
-      }, 100);
+        previous++;
+        console.log(document.querySelector('.li_num_' + contador))
+        setTimeout(function () {
+          document.querySelector('.li_num_' + contador).style.display = "block";
+        }, 100);
 
-      setTimeout(function () {
-        document.querySelector('.li_num_' + contador).className = "list_dsp_true " + 'list_shopping list_dsp_none' + " li_num_" + contador;
-        contador++;
-      }, 200);
+        setTimeout(function () {
+          document.querySelector('.li_num_' + contador).className = "list_dsp_true " + 'list_shopping list_dsp_none' + " li_num_" + contador;
+          contador++;
+        }, 200);
 
-       }
-       else return ;
+      }
+      else return;
 
 
 
       function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
             var cookie = jQuery.trim(cookies[i]);
             // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
             }
+          }
         }
-    }
-    return cookieValue;
-}
-var csrftoken = getCookie('csrftoken');
+        return cookieValue;
+      }
+      var csrftoken = getCookie('csrftoken');
 
-function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-$.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+      $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
         }
-    }
-});
+      });
 
       $.ajax({
         type: "POST",
         url: 'guru_list/',
         data: {
-          'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val() ,
-            "guru_handle": guru_handle,
+          'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
+          "guru_handle": guru_handle,
         },
-        dataType: "json",   
+        dataType: "json",
 
         success: function (data) {
-          if(data.x == 0)
-          {
+          if (data.x == 0) {
             alert('ERROr')
           }
-          
+
 
         },
         failure: function () {
         }
-           
-    });
+
+      });
 
       // switch (action) {
       //   case "SHOPPING":
@@ -1238,17 +1256,17 @@ $.ajaxSetup({
 
       // var class_li  =['list_shopping list_dsp_none','list_work list_dsp_none','list_sport list_dsp_none','list_music list_dsp_none'];  
 
-     
+
     }
 
-    function finish_action(num2,guru_handle) {
+    function finish_action(num2, guru_handle) {
 
       num = 0
-      console.log(num , num2);
+      console.log(num, num2);
 
       var class_li = ['list_shopping list_dsp_true', 'list_work  list_dsp_true', 'list_sport list_dsp_true', 'list_music list_dsp_true'];
       console.log('.li_num_' + num2);
-      document.querySelector('.li_num_'+num2).className = class_li[num] + " list_finish_state";
+      document.querySelector('.li_num_' + num2).className = class_li[num] + " list_finish_state";
       setTimeout(function () {
         del_finish();
       }, 500);
@@ -1258,56 +1276,55 @@ $.ajaxSetup({
 
 
 
-function getCookie(name) {
-      var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
+      function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
             var cookie = jQuery.trim(cookies[i]);
             // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
             }
+          }
         }
-    }
-    return cookieValue;
-}
-var csrftoken = getCookie('csrftoken');
+        return cookieValue;
+      }
+      var csrftoken = getCookie('csrftoken');
 
-function csrfSafeMethod(method) {
-    // these HTTP methods do not require CSRF protection
-    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-}
-$.ajaxSetup({
-    beforeSend: function(xhr, settings) {
-        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+      $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
         }
-    }
-});
+      });
 
       $.ajax({
         type: "POST",
         url: 'delete_guru/',
         data: {
-          'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val() ,
-            "guru_handle": guru_handle,
+          'csrfmiddlewaretoken': $("input[name=csrfmiddlewaretoken]").val(),
+          "guru_handle": guru_handle,
         },
-        dataType: "json",   
+        dataType: "json",
 
         success: function (data) {
-          if(data.x == 0)
-          {
+          if (data.x == 0) {
             alert('ERROr')
           }
-          
+
 
         },
         failure: function () {
         }
-           
-    });
+
+      });
 
     }
 
@@ -1331,7 +1348,7 @@ $.ajaxSetup({
     }
     var t = 0;
     function add_new() {
-     
+
       if (t % 2 == 0) {
         document.querySelector('.cont_crear_new').className = "cont_crear_new cont_crear_new_active";
 
