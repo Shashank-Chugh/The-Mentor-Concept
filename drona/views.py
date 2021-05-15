@@ -34,6 +34,8 @@ def home(request):
     categories = getCat()
 
     context =   {  "gurus" : gurus  ,  "categories":categories , 'photoURL':request.user.profile.photoURL,'name':request.user.username}
+    
+    
     return render(request, 'drona/index.html',context)
 
 def isvalid_handle(handle):
@@ -128,7 +130,6 @@ def contests(request):
      return render(request, 'drona/contests.html')
 
 
-
 def problems_data(request):
     #from form
     # gurus = request.user.profile.gurus
@@ -191,7 +192,5 @@ def problems_data(request):
 
 def problems(request):
     return render(request , 'drona/problems.html' )
-
-        
 
 

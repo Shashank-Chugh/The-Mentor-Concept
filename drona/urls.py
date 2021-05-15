@@ -10,8 +10,4 @@ urlpatterns = [
     path('problems_data/', views.problems_data , name='problems_data'),
     path('contests_data/', views.contests_data , name='contests_data'),
 
-
-
-
-
 ]

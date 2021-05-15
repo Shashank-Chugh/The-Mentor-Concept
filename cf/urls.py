@@ -19,4 +19,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('drona/', include('drona.urls')),
+    path('reminder/', include('reminder.urls')),
+
 ]

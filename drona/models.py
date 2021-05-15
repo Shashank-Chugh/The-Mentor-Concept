@@ -10,8 +10,15 @@ class Contest(models.Model):
     def __str__(self):
         return self.name 
 
+class Problems(models.Model):
+    
+    contestId = models.IntegerField()
+    index =  models.CharField(max_length=3)
+    name = models.CharField(max_length = 100)
+    tags =  models.CharField(max_length=150)
+    rating =  models.IntegerField()
 
-     
-
+    def __str__(self):
+        return self.name
     
     
